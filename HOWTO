@@ -1,0 +1,6 @@
+//comment provisioning profile in iOS-app/BUILD
+bazel build //ios-app:ios-app
+bazel run //ios-app:ios-app
+
+//uncomment provisioning profile in iOS-app/BUILD
+bazel run //ios-app:xcodeproj
