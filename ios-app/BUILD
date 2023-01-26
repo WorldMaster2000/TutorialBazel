@@ -165,6 +165,7 @@ ios_application(
     ],
     deps = [
         ":Main",
+        "//submodules/FirstTestModule:FirstTestModule",
     ],
 )
 

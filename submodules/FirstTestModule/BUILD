@@ -1,36 +1,17 @@
-public_headers = glob([
-  "Source/PublicHeaders/AsyncDisplayKit/*.h",
-])
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
-private_headers = glob([
-  "Source/*.h",
-])
-
-objc_library(
-    name = "AsyncDisplayKit",
-    enable_modules = True,
-    module_name = "AsyncDisplayKit",
+swift_library(
+    name = "FirstTestModule",
+    module_name = "FirstTestModule",
     srcs = glob([
-        "Source/**/*.m",
-        "Source/**/*.mm",
-    ]) + private_headers,
+        "Source/**/*.swift",
+    ]),
     copts = [
-        "-Werror",
+        "-warnings-as-errors",
     ],
-    hdrs = public_headers,
-    defines = [
-        "MINIMAL_ASDK",
-    ],
-    includes = [
-      "Source/PublicHeaders",
-    ],
-    sdk_frameworks = [
-      "Foundation",
-      "UIKit",
-      "QuartzCore",
-      "CoreMedia",
-      "CoreText",
-      "CoreGraphics",
+    deps = [
+    "//submodules/SSignalKit/SwiftSignalKit:SwiftSignalKit",
+    "//submodules/AsyncDisplayKit:AsyncDisplayKit",
     ],
     visibility = [
         "//visibility:public",
